@@ -46,5 +46,60 @@ def sort_by_num_friends():
     print (result1)
 
 
-
+def mean_num_friends(x):
     
+    sum = 0
+    for num in x:
+        sum += num
+    size = len(x)
+    return sum / size 
+    
+    
+
+def median_num_friends(x):
+    
+    x.sort()
+    size = len(x)
+    if size & 1 :
+        return x[size / 2]
+    else:
+        return (x[size / 2 - 1] + x[size / 2]) / 2
+       
+    
+
+
+num_friends1=[100, 49, 41, 40, 25, 10, 5, 4, 7, 20, 60]
+print("mean = {}".format(mean_num_friends(num_friends1)))
+
+print("median = {}".format(median_num_friends(num_friends1)))
+
+import numpy as np
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+import math
+
+def demo1():
+    mu, sigma = 0 , 1
+    sampleNo = 100000
+    np.random.seed(0)
+    s = np.random.normal(mu,sigma,sampleNo)
+
+    plt.hist(s,bins = 25, normed = True)
+    plt.show()
+
+
+def normal_pdf(x, mu=0, sigma=1):
+    y_sig = np.exp(-(x - mu) ** 2 /(2* sigma**2))/(math.sqrt(2*math.pi)*sigma)
+    return y_sig
+
+xs = [x / 10.0 for x in range(-50, 50)]
+plt.plot(xs, [normal_pdf(x, sigma=1) for x in xs], '-', label='mu=0,sigma=1')
+plt.plot(xs, [normal_pdf(x, sigma=2) for x in xs], '-', label='mu=0,sigma=2')
+plt.plot(xs, [normal_pdf(x, sigma=0.5) for x in xs], '-', label='mu=0,sigma=0.5')
+plt.plot(xs, [normal_pdf(x, sigma=-1) for x in xs], '-', label='mu=0,sigma=-1')
+plt.legend()
+plt.show()
+
+
+      
+      
